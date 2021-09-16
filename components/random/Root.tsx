@@ -1,4 +1,12 @@
-import { Box, Button, IconButton, Paper, TextField } from '@mui/material';
+import {
+  Box,
+  Button,
+  IconButton,
+  Link,
+  Paper,
+  TextField,
+  Typography,
+} from '@mui/material';
 import React, { useState } from 'react';
 import { useLocalStorageState } from '../../hooks/useLocalStorage';
 import ListCard from '../ListCard';
@@ -25,11 +33,13 @@ export default function Root() {
       sx={{
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
+        flexDirection: 'column',
         width: 1,
         height: 1,
       }}
     >
+      <Typography variant="h2">Random student</Typography>
       <Box
         sx={{
           display: 'flex',
@@ -50,6 +60,8 @@ export default function Root() {
               gap: 1,
               justifyContent: 'center',
               alignItems: 'center',
+              maxHeight: '500px',
+              overflow: 'scroll',
             }}
           >
             {list.map((value, index) => {
@@ -85,6 +97,11 @@ export default function Root() {
             Random
           </Button>
         </Paper>
+      </Box>
+      <Box p={1}>
+        <Typography variant="body1">
+          Made by <Link href="https://github.com/melvynx">Melvynx</Link> with ❤️
+        </Typography>
       </Box>
     </Box>
   );
