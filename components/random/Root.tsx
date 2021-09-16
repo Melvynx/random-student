@@ -5,7 +5,7 @@ import ListCard from '../ListCard';
 import Form from './Form';
 import dynamic from 'next/dynamic';
 
-const DynamicComponent = dynamic(() => import('./RandomModal'));
+const DynamicComponent = dynamic(() => import('./RandomModal'), { ssr: false });
 
 export default function Root() {
   const [list, setList] = useLocalStorageState<string[]>('random-list', []);
