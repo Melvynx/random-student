@@ -40,6 +40,27 @@ function createBaseTheme() {
       },
     },
     spacing: 8,
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            borderRadius: 16,
+          },
+        },
+      },
+      MuiPaper: {
+        styleOverrides: {
+          root: {
+            borderRadius: 16,
+          },
+        },
+      },
+      MuiTextField: {
+        styleOverrides: {
+          root: {},
+        },
+      },
+    },
   });
 }
 

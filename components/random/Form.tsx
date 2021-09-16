@@ -15,16 +15,27 @@ export default function Form({ onAdd }: { onAdd: (name: string) => void }) {
         p: 2,
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'center',
+        gap: 1,
+        width: 1,
       }}
     >
       <TextField
+        sx={{
+          '& .MuiOutlinedInput-notchedOutline': {
+            borderRadius: 4,
+          },
+        }}
+        label="Anything..."
         onKeyPress={(e) => {
           if (e.key === 'Enter') onClick();
         }}
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <Button onClick={onClick}>Add</Button>
+      <Button size="large" onClick={onClick}>
+        Add
+      </Button>
     </Box>
   );
 }

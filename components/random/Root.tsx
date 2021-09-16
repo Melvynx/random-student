@@ -25,44 +25,52 @@ export default function Root() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'column',
         width: 1,
         height: 1,
-        gap: 2,
       }}
     >
-      {open && <DynamicComponent list={list} onFinish={() => setOpen(false)} />}
-      <Paper>
-        <Box
-          sx={{
-            p: 2,
-            display: 'flex',
-            maxWidth: '500px',
-            flexWrap: 'wrap',
-            gap: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          {list.map((value, index) => {
-            return (
-              <ListCard onRemove={onRemove} id={index} key={index} name={value} />
-            );
-          })}
-        </Box>
-      </Paper>
-      <Paper>
-        <Form
-          onAdd={(value) => {
-            setList((prev) => [...prev, value]);
-          }}
-        />
-      </Paper>
-      <Paper sx={{ p: 2 }}>
-        <Button size="large" variant="contained" onClick={() => setOpen(true)}>
-          Random
-        </Button>
-      </Paper>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          maxWidth: '500px',
+          gap: 2,
+        }}
+      >
+        {open && <DynamicComponent list={list} onFinish={() => setOpen(false)} />}
+        <Paper sx={{ width: 1 }}>
+          <Box
+            sx={{
+              p: 2,
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            {list.map((value, index) => {
+              return (
+                <ListCard onRemove={onRemove} id={index} key={index} name={value} />
+              );
+            })}
+          </Box>
+        </Paper>
+        <Paper sx={{ width: 1 }}>
+          <Form
+            onAdd={(value) => {
+              setList((prev) => [...prev, value]);
+            }}
+          />
+        </Paper>
+        <Paper sx={{ p: 2, width: 1, display: 'flex', justifyContent: 'center' }}>
+          <Button size="large" variant="contained" onClick={() => setOpen(true)}>
+            Random
+          </Button>
+        </Paper>
+      </Box>
     </Box>
   );
 }
