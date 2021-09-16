@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import { useLocalStorageState } from '../../hooks/useLocalStorage';
 import ListCard from '../ListCard';
 import Form from './Form';
-import RandomModal from './RandomModal';
+import dynamic from 'next/dynamic';
+
+const DynamicComponent = dynamic(() => import('./RandomModal'));
 
 export default function Root() {
   const [list, setList] = useLocalStorageState<string[]>('random-list', []);
@@ -29,7 +31,7 @@ export default function Root() {
         gap: 2,
       }}
     >
-      {open && <RandomModal list={list} onFinish={() => setOpen(false)} />}
+      {open && <DynamicComponent list={list} onFinish={() => setOpen(false)} />}
       <Paper>
         <Box
           sx={{

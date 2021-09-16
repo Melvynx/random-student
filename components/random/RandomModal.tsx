@@ -29,8 +29,6 @@ export default function RandomModal({
   list: string[];
   onFinish: () => void;
 }) {
-  const random = React.useRef(getRandomValueFromArray(list));
-
   const [mustSpin, setMustSpin] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState(0);
 
