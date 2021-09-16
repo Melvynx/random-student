@@ -1,9 +1,10 @@
-import { Box, Button, Paper, TextField } from '@mui/material';
+import { Box, Button, IconButton, Paper, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { useLocalStorageState } from '../../hooks/useLocalStorage';
 import ListCard from '../ListCard';
 import Form from './Form';
 import dynamic from 'next/dynamic';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 const DynamicComponent = dynamic(() => import('./RandomModal'), { ssr: false });
 
@@ -56,6 +57,18 @@ export default function Root() {
                 <ListCard onRemove={onRemove} id={index} key={index} name={value} />
               );
             })}
+
+            {list.length > 0 && (
+              <IconButton
+                onClick={() => {
+                  if (confirm('Delete all items forever?')) {
+                    setList([]);
+                  }
+                }}
+              >
+                <DeleteForeverIcon />
+              </IconButton>
+            )}
           </Box>
         </Paper>
         <Paper sx={{ width: 1 }}>
@@ -65,7 +78,9 @@ export default function Root() {
             }}
           />
         </Paper>
-        <Paper sx={{ p: 2, width: 1, display: 'flex', justifyContent: 'center' }}>
+        <Paper
+          sx={{ p: 2, gap: 2, width: 1, display: 'flex', justifyContent: 'center' }}
+        >
           <Button size="large" variant="contained" onClick={() => setOpen(true)}>
             Random
           </Button>

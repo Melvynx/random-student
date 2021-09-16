@@ -26,7 +26,6 @@ export default function Form({ onAdd }: { onAdd: (name: string) => void }) {
             borderRadius: 4,
           },
         }}
-        label="Anything..."
         onKeyPress={(e) => {
           if (e.key === 'Enter') onClick();
         }}
