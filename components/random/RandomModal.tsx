@@ -29,7 +29,7 @@ export default function RandomModal({
   list: string[];
   onFinish: () => void;
 }) {
-  const [mustSpin, setMustSpin] = useState(false);
+  const [mustSpin, setMustSpin] = useState(true);
   const [prizeNumber, setPrizeNumber] = useState(0);
 
   const handleSpinClick = () => {
