@@ -20,7 +20,6 @@ const images = [
   'assets/avatar/9.svg',
   'assets/avatar/10.svg',
 ];
-console.log(images);
 
 export default function ListCard({ id, name, onRemove }: ListCardProps) {
   return (
@@ -34,7 +33,7 @@ export default function ListCard({ id, name, onRemove }: ListCardProps) {
     >
       <Box position="relative">
         <Avatar
-          src={images[id % 4]}
+          src={images[id % 10]}
           sx={{
             width: 48,
             height: 48,
