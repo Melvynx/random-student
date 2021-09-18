@@ -39,7 +39,12 @@ export default function Root() {
         height: 1,
       }}
     >
-      <Typography variant="h2">Random student</Typography>
+      <Typography
+        variant="h2"
+        sx={{ mt: { xs: 1, sm: 2 }, fontFamily: 'Fredoka One' }}
+      >
+        Random student
+      </Typography>
       <Box
         sx={{
           display: 'flex',
@@ -64,11 +69,26 @@ export default function Root() {
               overflow: 'scroll',
             }}
           >
-            {list.map((value, index) => {
-              return (
-                <ListCard onRemove={onRemove} id={index} key={index} name={value} />
-              );
-            })}
+            {list.length !== 0 ? (
+              list.map((value, index) => {
+                return (
+                  <ListCard
+                    onRemove={onRemove}
+                    id={index}
+                    key={index}
+                    name={value}
+                  />
+                );
+              })
+            ) : (
+              <Typography
+                color="textSecondary"
+                fontStyle="italic"
+                sx={{ fontFamily: 'Fredoka One' }}
+              >
+                Type something...
+              </Typography>
+            )}
 
             {list.length > 0 && (
               <IconButton
@@ -93,7 +113,12 @@ export default function Root() {
         <Paper
           sx={{ p: 2, gap: 2, width: 1, display: 'flex', justifyContent: 'center' }}
         >
-          <Button size="large" variant="contained" onClick={() => setOpen(true)}>
+          <Button
+            disabled={list.length === 0}
+            size="large"
+            variant="contained"
+            onClick={() => setOpen(true)}
+          >
             Random
           </Button>
         </Paper>

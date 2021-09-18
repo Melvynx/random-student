@@ -53,7 +53,7 @@ export default function ListCard({ id, name, onRemove }: ListCardProps) {
       <Typography
         color="textPrimary"
         sx={{
-          fontFamily: 'Work Sans',
+          fontFamily: 'Fredoka One',
           fontSize: 20,
           width: '100%',
           fontWeight: 'bold',
