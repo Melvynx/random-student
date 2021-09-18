@@ -58,7 +58,7 @@ export default function Root() {
               justifyContent: 'center',
               alignItems: 'center',
               maxHeight: '500px',
-              overflow: 'scroll',
+              overflowY: 'scroll',
             }}
           >
             {list.length > 0 ? (
