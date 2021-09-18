@@ -1,18 +1,10 @@
-import {
-  Box,
-  Button,
-  IconButton,
-  Link,
-  Paper,
-  TextField,
-  Typography,
-} from '@mui/material';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { Box, Button, IconButton, Link, Paper, Typography } from '@mui/material';
+import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
 import { useLocalStorageState } from '../../hooks/useLocalStorage';
 import ListCard from '../ListCard';
 import Form from './Form';
-import dynamic from 'next/dynamic';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 const DynamicComponent = dynamic(() => import('./RandomModal'), { ssr: false });
 
@@ -69,17 +61,28 @@ export default function Root() {
               overflow: 'scroll',
             }}
           >
-            {list.length !== 0 ? (
-              list.map((value, index) => {
-                return (
-                  <ListCard
-                    onRemove={onRemove}
-                    id={index}
-                    key={index}
-                    name={value}
-                  />
-                );
-              })
+            {list.length > 0 ? (
+              <>
+                {list.map((value, index) => {
+                  return (
+                    <ListCard
+                      onRemove={onRemove}
+                      id={index}
+                      key={index}
+                      name={value}
+                    />
+                  );
+                })}
+                <IconButton
+                  onClick={() => {
+                    if (confirm('Delete all items forever?')) {
+                      setList([]);
+                    }
+                  }}
+                >
+                  <DeleteForeverIcon />
+                </IconButton>
+              </>
             ) : (
               <Typography
                 color="textSecondary"
@@ -88,18 +91,6 @@ export default function Root() {
               >
                 Type something...
               </Typography>
-            )}
-
-            {list.length > 0 && (
-              <IconButton
-                onClick={() => {
-                  if (confirm('Delete all items forever?')) {
-                    setList([]);
-                  }
-                }}
-              >
-                <DeleteForeverIcon />
-              </IconButton>
             )}
           </Box>
         </Paper>

@@ -1,6 +1,6 @@
-import { Box, Avatar, Typography } from '@mui/material';
-import React from 'react';
 import CloseIcon from '@mui/icons-material/Close';
+import { Avatar, Box, Typography } from '@mui/material';
+import React from 'react';
 
 type ListCardProps = {
   id: number;

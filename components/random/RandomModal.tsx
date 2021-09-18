@@ -1,11 +1,4 @@
-import {
-  Box,
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  Typography,
-} from '@mui/material';
+import { Box, Button, Dialog } from '@mui/material';
 import React, { useState } from 'react';
 import { Wheel } from 'react-custom-roulette';
 import { WheelData } from 'react-custom-roulette/dist/components/Wheel/types';

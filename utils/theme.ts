@@ -1,20 +1,7 @@
 import { createTheme, PaletteOptions, responsiveFontSizes } from '@mui/material';
 
-// const PRIMARY = '#8FACE4';
-// const SECONDARY = '#5d536b';
-
 const palette: PaletteOptions = {
   mode: 'dark',
-  // primary: {
-  //   main: PRIMARY,
-  // },
-  // secondary: {
-  //   main: SECONDARY,
-  // },
-  // background: {
-  //   default: '#0f131a',
-  //   paper: '#1a1d24',
-  // },
 };
 
 function createBaseTheme() {
