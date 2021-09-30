@@ -35,7 +35,7 @@ export default function Root() {
         variant="h2"
         sx={{ mt: { xs: 1, sm: 2 }, fontFamily: 'Fredoka One' }}
       >
-        Random student
+        Random 🧑‍🎓
       </Typography>
       <Box
         sx={{

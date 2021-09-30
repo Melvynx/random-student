@@ -15,6 +15,10 @@ function getData(list: string[]): WheelData[] {
   });
 }
 
+function getRandomNumber(list: string[]) {
+  return Math.floor(Math.random() * list.length);
+}
+
 export default function RandomModal({
   list,
   onFinish,
@@ -23,10 +27,10 @@ export default function RandomModal({
   onFinish: () => void;
 }) {
   const [mustSpin, setMustSpin] = useState(true);
-  const [prizeNumber, setPrizeNumber] = useState(0);
+  const [prizeNumber, setPrizeNumber] = useState(getRandomNumber(list));
 
   const handleSpinClick = () => {
-    const newPrizeNumber = Math.floor(Math.random() * list.length);
+    const newPrizeNumber = getRandomNumber(list);
     setPrizeNumber(newPrizeNumber);
     setMustSpin(true);
   };
