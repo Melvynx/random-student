@@ -19,13 +19,12 @@ function getRandomNumber(list: string[]) {
   return Math.floor(Math.random() * list.length);
 }
 
-export default function RandomModal({
-  list,
-  onFinish,
-}: {
+type RandomModalProps = {
   list: string[];
   onFinish: () => void;
-}) {
+};
+
+export default function RandomModal({ list, onFinish }: RandomModalProps) {
   const [mustSpin, setMustSpin] = useState(true);
   const [prizeNumber, setPrizeNumber] = useState(getRandomNumber(list));
 
