@@ -26,6 +26,7 @@ export default function Root() {
   }, [setList]);
 
   useEffect(() => {
+    if (list.length === 0) return;
     const url = new URL(window.location.href);
     url.searchParams.set(
       appKey,
