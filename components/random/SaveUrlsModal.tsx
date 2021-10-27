@@ -16,11 +16,6 @@ import { useLocalStorageState } from '../../hooks/useLocalStorage';
 import { parseUrlQuery } from '../utils';
 import { appKey } from './Root';
 
-type SavedUrl = {
-  name: string;
-  url: string;
-};
-
 export default function SaveUrlsModal() {
   const [savedUrls, setSavedUrls] = useLocalStorageState<string[]>('saved-urls', []);
   const [open, setOpen] = useState(false);
