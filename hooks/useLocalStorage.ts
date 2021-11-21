@@ -26,7 +26,10 @@ function useLocalStorageState<T>(
       window.localStorage.removeItem(prevKey);
     }
     prevKeyRef.current = key;
-    window.localStorage.setItem(key, serialize(state));
+    // need to set the current value before setting the new value
+    setTimeout(() => {
+      window.localStorage.setItem(key, serialize(state));
+    }, 100);
   }, [key, state, serialize]);
 
   return [state, setState];
