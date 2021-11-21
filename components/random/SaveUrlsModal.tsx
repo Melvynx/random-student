@@ -1,7 +1,7 @@
 import SaveIcon from '@mui/icons-material/Save';
-import CloseIcon from '@mui/icons-material/Close';
 import {
   Button,
+  Checkbox,
   Chip,
   Dialog,
   DialogContent,
@@ -16,7 +16,7 @@ import { useLocalStorageState } from '../../hooks/useLocalStorage';
 import { parseUrlQuery } from '../utils';
 import { appKey } from './Root';
 
-export default function SaveUrlsModal() {
+export default function SettingsModal() {
   const [savedUrls, setSavedUrls] = useLocalStorageState<string[]>('saved-urls', []);
   const [open, setOpen] = useState(false);
 

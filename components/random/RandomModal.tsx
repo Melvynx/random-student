@@ -1,4 +1,4 @@
-import { Box, Button, Dialog } from '@mui/material';
+import { Box, Button, Dialog, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { Wheel } from 'react-custom-roulette';
 import { WheelData } from 'react-custom-roulette/dist/components/Wheel/types';
@@ -22,9 +22,14 @@ function getRandomNumber(list: string[]) {
 type RandomModalProps = {
   list: string[];
   onFinish: () => void;
+  showRoulette?: boolean;
 };
 
-export default function RandomModal({ list, onFinish }: RandomModalProps) {
+export default function RandomModal({
+  list,
+  onFinish,
+  showRoulette,
+}: RandomModalProps) {
   const [mustSpin, setMustSpin] = useState(true);
   const [prizeNumber, setPrizeNumber] = useState(getRandomNumber(list));
 
@@ -46,16 +51,23 @@ export default function RandomModal({ list, onFinish }: RandomModalProps) {
           gap: 2,
         }}
       >
-        <Wheel
-          mustStartSpinning={mustSpin}
-          prizeNumber={prizeNumber}
-          data={getData(list)}
-          backgroundColors={['#3e3e3e', '#df3428']}
-          textColors={['#ffffff']}
-          onStopSpinning={() => {
-            setMustSpin(false);
-          }}
-        />
+        {(!mustSpin || !showRoulette) && (
+          <Typography align="center" variant="h4">
+            {list[prizeNumber]}
+          </Typography>
+        )}
+        {showRoulette ? (
+          <Wheel
+            mustStartSpinning={mustSpin}
+            prizeNumber={prizeNumber}
+            data={getData(list)}
+            backgroundColors={['#3e3e3e', '#df3428']}
+            textColors={['#ffffff']}
+            onStopSpinning={() => {
+              setMustSpin(false);
+            }}
+          />
+        ) : null}
         <Button onClick={onFinish}>Close</Button>
         <Button variant="outlined" onClick={handleSpinClick}>
           Randomiz
