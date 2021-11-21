@@ -22,4 +22,17 @@ a {
 
 * {
   box-sizing: border-box;
+  scrollbar-color: #90caf9 #1e1e1e;
+  scrollbar-width: thin;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  background-color: #1e1e1e;
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #90caf9;
+  border-radius: 8px;
 }
