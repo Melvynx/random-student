@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function useLocalStorageState<T>(
+export function useLocalStorageState<T>(
   key: string,
   defaultValue: T | (() => T),
   { serialize = JSON.stringify, deserialize = JSON.parse } = {}
@@ -34,5 +34,3 @@ function useLocalStorageState<T>(
 
   return [state, setState];
 }
-
-export { useLocalStorageState };

@@ -1,3 +1,5 @@
+export const randomListQueryKey = 'random-list';
+
 export const parseUrlQuery = (value: string) => {
   const urlParams = new URL(value).searchParams;
   return Array.from(urlParams.keys()).reduce(

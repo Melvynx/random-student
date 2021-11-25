@@ -1,28 +1,12 @@
 import { Box, Button, Dialog, Typography } from '@mui/material';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Wheel } from 'react-custom-roulette';
-import { WheelData } from 'react-custom-roulette/dist/components/Wheel/types';
-
-export function getRandomValueFromArray<T>(possibilities: T[]): T {
-  return possibilities[Math.floor(Math.random() * possibilities.length)];
-}
-
-const colors = ['#d32f2f', '#1976d2', '#381f75', '#006974', '#87103f'];
-
-function getData(list: string[]): WheelData[] {
-  return list.map((v, index) => {
-    return { option: v, style: { backgroundColor: colors[index % colors.length] } };
-  });
-}
-
-function getRandomNumber(list: string[]) {
-  return Math.floor(Math.random() * list.length);
-}
+import { getData, getRandomNumber } from '../../service/random';
 
 type RandomModalProps = {
   list: string[];
-  onFinish: () => void;
   showRoulette?: boolean;
+  onFinish: () => void;
   onRandom?: (index: number) => void;
 };
 

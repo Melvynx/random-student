@@ -2,7 +2,7 @@ import { Button, TextField } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
 
-export default function Form({ onAdd }: { onAdd: (name: string) => void }) {
+export function RandomForm({ onAdd }: { onAdd: (name: string) => void }) {
   const [value, setValue] = useState('');
 
   function onClick() {
@@ -12,10 +12,10 @@ export default function Form({ onAdd }: { onAdd: (name: string) => void }) {
   return (
     <Box
       sx={{
-        p: 2,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        p: 2,
         gap: 1,
         width: 1,
       }}

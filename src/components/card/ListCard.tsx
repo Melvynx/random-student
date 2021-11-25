@@ -21,7 +21,7 @@ const images = [
   'assets/avatar/10.svg',
 ];
 
-export default function ListCard({ id, name, onRemove }: ListCardProps) {
+export function ListCard({ id, name, onRemove }: ListCardProps) {
   return (
     <Box
       borderRadius="32px"

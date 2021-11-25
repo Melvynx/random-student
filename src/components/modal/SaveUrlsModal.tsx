@@ -1,7 +1,6 @@
 import SaveIcon from '@mui/icons-material/Save';
 import {
   Button,
-  Checkbox,
   Chip,
   Dialog,
   DialogContent,
@@ -12,11 +11,10 @@ import {
 } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
-import { useLocalStorageState } from '../../hooks/useLocalStorage';
-import { parseUrlQuery } from '../utils';
-import { appKey } from './Root';
+import { parseUrlQuery, randomListQueryKey } from '~/service';
+import { useLocalStorageState } from '../../hooks/useLocalStorageState';
 
-export default function SettingsModal() {
+export function SaveUrlsModal() {
   const [savedUrls, setSavedUrls] = useLocalStorageState<string[]>('saved-urls', []);
   const [open, setOpen] = useState(false);
 
@@ -45,7 +43,7 @@ export default function SettingsModal() {
           <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
             {savedUrls.length > 0 ? (
               savedUrls.map((savedUrl, i) => {
-                const paramsList = parseUrlQuery(savedUrl)[appKey];
+                const paramsList = parseUrlQuery(savedUrl)[randomListQueryKey];
                 return (
                   <Tooltip title={paramsList} key={i}>
                     <Chip

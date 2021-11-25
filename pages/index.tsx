@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Root from '../components/random/Root';
+import { RandomApp } from '~/components';
 
 function Home() {
   return (
@@ -11,7 +11,7 @@ function Home() {
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Head>
 
-      <Root />
+      <RandomApp />
     </>
   );
 }

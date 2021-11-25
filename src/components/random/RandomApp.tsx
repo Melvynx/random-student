@@ -2,20 +2,18 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { Box, IconButton, Link, Paper, Typography } from '@mui/material';
 import dynamic from 'next/dynamic';
 import React, { useCallback, useState } from 'react';
-import { useLocalStorageState } from '../../hooks/useLocalStorage';
-import ListCard from '../ListCard';
-import { defaultSettings, Settings } from '../types';
-import Form from './Form';
+import { ListCard } from '~/components/card';
+import { SaveUrlsModal, SettingsModal } from '~/components/modal';
+import { useLocalStorageState, useRandomList } from '~/hooks';
+import { defaultSettings, Settings } from '~/types';
 import RandomButton from './RandomButton';
-import SaveUrlsModal from './SaveUrlsModal';
-import SettingsModal from './SettingsModal';
-import useRandomList from './useRandomList';
+import { RandomForm } from './RandomForm';
 
-const DynamicRandomModal = dynamic(() => import('./RandomModal'), { ssr: false });
+const DynamicRandomModal = dynamic(() => import('~/components/modal/RandomModal'), {
+  ssr: false,
+});
 
-export const appKey = 'random-list';
-
-export default function Root() {
+export function RandomApp() {
   const [open, setOpen] = useState(false);
   const [list, setList] = useRandomList();
   const [settings, setSettings] = useLocalStorageState<Settings>(
@@ -151,7 +149,7 @@ export default function Root() {
           </Box>
         </Paper>
         <Paper sx={{ mt: 'auto' }}>
-          <Form
+          <RandomForm
             onAdd={(value) => {
               setList((prev) => [...prev, value]);
             }}
