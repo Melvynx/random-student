@@ -12,7 +12,6 @@ export default function useRandomList(): [
     const keyParams = parseUrlQuery(window.location.href)[appKey];
     if (keyParams) {
       const array = keyParams.split(',');
-      console.log('Array', array);
       setList(array);
       return;
     }

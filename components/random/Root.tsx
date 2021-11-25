@@ -1,7 +1,7 @@
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { Box, IconButton, Link, Paper, Typography } from '@mui/material';
 import dynamic from 'next/dynamic';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useLocalStorageState } from '../../hooks/useLocalStorage';
 import ListCard from '../ListCard';
 import { defaultSettings, Settings } from '../types';
@@ -23,13 +23,25 @@ export default function Root() {
     defaultSettings
   );
 
-  function onRemove(index: number) {
-    setList((prev) => {
-      const copy = [...prev];
-      copy.splice(index, 1);
-      return copy;
-    });
-  }
+  const onRemove = useCallback(
+    (index: number) => {
+      setList((prev) => {
+        const copy = [...prev];
+        copy.splice(index, 1);
+        return copy;
+      });
+    },
+    [setList]
+  );
+
+  const onRandom = useCallback(
+    (index) => {
+      if (settings.deleteOnRandom) {
+        onRemove(index);
+      }
+    },
+    [onRemove, settings.deleteOnRandom]
+  );
 
   return (
     <Box
@@ -48,6 +60,7 @@ export default function Root() {
           showRoulette={settings.showRoulette}
           list={list}
           onFinish={() => setOpen(false)}
+          onRandom={onRandom}
         />
       )}
       <Box
@@ -99,7 +112,6 @@ export default function Root() {
               gap: 1,
               justifyContent: 'center',
               alignItems: 'center',
-              // maxHeight: { xs: 350, sm: 500 },
               maxHeight: 'max(50vh, 300px)',
               flex: 1,
               overflowY: 'auto',
