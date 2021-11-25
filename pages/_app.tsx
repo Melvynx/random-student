@@ -1,10 +1,11 @@
-import { CacheProvider, EmotionCache } from '@emotion/react';
+import type { EmotionCache } from '@emotion/react';
+import { CacheProvider } from '@emotion/react';
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import React from 'react';
-import { createEmotionCache, theme } from '~/service';
+import { createEmotionCache, theme } from '~/services';
 import '../styles/globals.css';
 
 // Client-side cache, shared for the whole session of the user in the browser.

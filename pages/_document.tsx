@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import createEmotionServer from '@emotion/server/create-instance';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 import * as React from 'react';
-import { theme, createEmotionCache } from '~/service';
+import { theme, createEmotionCache } from '~/services';
 
 export default class MyDocument extends Document {
   render() {
@@ -67,6 +68,7 @@ MyDocument.getInitialProps = async (ctx) => {
 
   ctx.renderPage = () =>
     originalRenderPage({
+      // eslint-disable-next-line react/display-name, @typescript-eslint/no-explicit-any
       enhanceApp: (App: any) => (props) => <App emotionCache={cache} {...props} />,
     });
 

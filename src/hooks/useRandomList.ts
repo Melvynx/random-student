@@ -1,5 +1,6 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { parseUrlQuery, randomListQueryKey } from '~/service';
+import type { Dispatch, SetStateAction} from 'react';
+import { useEffect, useState } from 'react';
+import { parseUrlQuery, randomListQueryKey } from '~/services';
 
 export const useRandomList = (): [string[], Dispatch<SetStateAction<string[]>>] => {
   const [list, setList] = useState<string[]>([]);

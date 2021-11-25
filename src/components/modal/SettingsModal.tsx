@@ -8,7 +8,8 @@ import {
   FormGroup,
   IconButton,
 } from '@mui/material';
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import type { Dispatch, SetStateAction} from 'react';
+import React, { useState } from 'react';
 import type { Settings } from '~/types';
 
 type SettingsModalProps = {

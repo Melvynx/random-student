@@ -1,7 +1,7 @@
 import { Box, Button, Dialog, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { Wheel } from 'react-custom-roulette';
-import { getData, getRandomNumber } from '../../service/random';
+import { getData, getRandomNumber } from '../../services/random';
 
 type RandomModalProps = {
   list: string[];

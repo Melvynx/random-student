@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState } from 'react';
-import { parseUrlQuery, randomListQueryKey } from '~/service';
+import { parseUrlQuery, randomListQueryKey } from '~/services';
 import { useLocalStorageState } from '../../hooks/useLocalStorageState';
 
 export function SaveUrlsModal() {

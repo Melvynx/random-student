@@ -15,7 +15,6 @@ export function useLocalStorageState<T>(
       if (valueInLocalStorage) {
         return deserialize(valueInLocalStorage);
       }
-      // @ts-ignore
       return prev;
     });
   }, [deserialize, key]);

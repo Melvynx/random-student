@@ -1,4 +1,4 @@
-import { WheelData } from 'react-custom-roulette/dist/components/Wheel/types';
+import type { WheelData } from 'react-custom-roulette/dist/components/Wheel/types';
 
 const colors = ['#b83535', '#155ba1', '#381f75', '#006974', '#87103f'] as const;
 

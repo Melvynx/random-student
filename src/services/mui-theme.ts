@@ -1,10 +1,12 @@
-import { createTheme, PaletteOptions, responsiveFontSizes } from '@mui/material';
+/* eslint-disable @typescript-eslint/naming-convention */
+import type { PaletteOptions } from '@mui/material';
+import { createTheme, responsiveFontSizes } from '@mui/material';
 
 const palette: PaletteOptions = {
   mode: 'dark',
 };
 
-function createBaseTheme() {
+const createBaseTheme = () => {
   return createTheme({
     palette,
     typography: {
@@ -49,8 +51,6 @@ function createBaseTheme() {
       },
     },
   });
-}
+};
 
-const theme = responsiveFontSizes(createBaseTheme());
-
-export default theme;
+export const theme = responsiveFontSizes(createBaseTheme());

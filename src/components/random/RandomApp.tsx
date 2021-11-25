@@ -5,7 +5,8 @@ import React, { useCallback, useState } from 'react';
 import { ListCard } from '~/components/card';
 import { SaveUrlsModal, SettingsModal } from '~/components/modal';
 import { useLocalStorageState, useRandomList } from '~/hooks';
-import { defaultSettings, Settings } from '~/types';
+import type { Settings } from '~/types';
+import { defaultSettings } from '~/types';
 import RandomButton from './RandomButton';
 import { RandomForm } from './RandomForm';
 
@@ -57,7 +58,9 @@ export function RandomApp() {
         <DynamicRandomModal
           showRoulette={settings.showRoulette}
           list={list}
-          onFinish={() => setOpen(false)}
+          onFinish={() => {
+            setOpen(false);
+          }}
           onRandom={onRandom}
         />
       )}
@@ -160,7 +163,12 @@ export function RandomApp() {
             p: 2,
           }}
         >
-          <RandomButton disabled={list.length === 0} onClick={() => setOpen(true)}>
+          <RandomButton
+            disabled={list.length === 0}
+            onClick={() => {
+              setOpen(true);
+            }}
+          >
             Random
           </RandomButton>
         </Paper>
