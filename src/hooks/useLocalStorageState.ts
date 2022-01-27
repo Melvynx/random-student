@@ -2,22 +2,20 @@ import * as React from 'react';
 
 export function useLocalStorageState<T>(
   key: string,
-  defaultValue: T | (() => T),
+  defaultValue: T,
   { serialize = JSON.stringify, deserialize = JSON.parse } = {}
 ): [T, React.Dispatch<React.SetStateAction<T>>] {
-  const [state, setState] = React.useState(defaultValue);
+  const [state, setState] = React.useState(() => {
+    try {
+      const item = window.localStorage.getItem(key);
+
+      return item ? (deserialize(item) as T) : defaultValue;
+    } catch (error) {
+      return defaultValue;
+    }
+  });
 
   const prevKeyRef = React.useRef(key);
-
-  React.useEffect(() => {
-    setState((prev) => {
-      const valueInLocalStorage = window.localStorage.getItem(key);
-      if (valueInLocalStorage) {
-        return deserialize(valueInLocalStorage);
-      }
-      return prev;
-    });
-  }, [deserialize, key]);
 
   React.useEffect(() => {
     const prevKey = prevKeyRef.current;
@@ -26,9 +24,7 @@ export function useLocalStorageState<T>(
     }
     prevKeyRef.current = key;
     // need to set the current value before setting the new value
-    setTimeout(() => {
-      window.localStorage.setItem(key, serialize(state));
-    }, 100);
+    window.localStorage.setItem(key, serialize(state));
   }, [key, state, serialize]);
 
   return [state, setState];

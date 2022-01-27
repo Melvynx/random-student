@@ -7,7 +7,7 @@ import { SaveUrlsModal, SettingsModal } from '~/components/modal';
 import { useLocalStorageState, useRandomList } from '~/hooks';
 import type { Settings } from '~/types';
 import { defaultSettings } from '~/types';
-import RandomButton from './RandomButton';
+import SpoofyButton from '../SpoofyButton';
 import { RandomForm } from './RandomForm';
 
 const DynamicRandomModal = dynamic(() => import('~/components/modal/RandomModal'), {
@@ -90,7 +90,7 @@ export function RandomApp() {
           textAlign: 'center',
         }}
       >
-        Random 🧑‍🎓
+        Random 🎲
       </Typography>
       <Box
         sx={{
@@ -158,21 +158,15 @@ export function RandomApp() {
             }}
           />
         </Paper>
-        <Paper
-          sx={{
-            p: 2,
+        <SpoofyButton
+          disabled={list.length === 0}
+          onClick={() => {
+            setOpen(true);
           }}
         >
-          <RandomButton
-            disabled={list.length === 0}
-            onClick={() => {
-              setOpen(true);
-            }}
-          >
-            Random
-          </RandomButton>
-        </Paper>
-        <Typography variant="body1">
+          Random
+        </SpoofyButton>
+        <Typography variant="body1" sx={{ fontSize: '1rem' }}>
           Made by <Link href="https://github.com/melvynx">Melvynx</Link>
         </Typography>
       </Box>

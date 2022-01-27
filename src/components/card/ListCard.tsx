@@ -75,7 +75,7 @@ export function ListCard({ id, name, onRemove }: ListCardProps) {
         onClick={() => onRemove(id)}
         bgcolor="transparent"
       >
-        <CloseIcon sx={{ color: 'white' }} />
+        <CloseIcon sx={{ color: 'white', maxWidth: 'unset' }} />
       </Box>
     </Box>
   );

@@ -2,6 +2,7 @@ import { Box, Button, Dialog, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { Wheel } from 'react-custom-roulette';
 import { getData, getRandomNumber } from '../../services/random';
+import SpoofyButton from '../SpoofyButton';
 
 type RandomModalProps = {
   list: string[];
@@ -42,6 +43,7 @@ export default function RandomModal({
           p: 2,
           flexDirection: 'column',
           justifyContent: 'center',
+          alignItems: 'center',
           gap: 2,
         }}
       >
@@ -62,10 +64,12 @@ export default function RandomModal({
             }}
           />
         ) : null}
-        <Button onClick={handleClose}>Close</Button>
-        <Button variant="outlined" onClick={handleSpinClick}>
-          Randomiz
-        </Button>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <Button size="large" onClick={handleClose}>
+            Close
+          </Button>
+          <SpoofyButton onClick={handleSpinClick}>Random</SpoofyButton>
+        </Box>
       </Box>
     </Dialog>
   );
